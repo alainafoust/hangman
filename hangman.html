@@ -55,7 +55,7 @@
         alert(answerArray.join(" "));
 
         //get a guess from the player, ensuring it's a single character
-        var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+        var guess = prompt("Guess a letter, or click Cancel to stop playing.").toLowerCase();
 
         if(guess === null){
           // exit the game loop (quit)
