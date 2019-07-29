@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Hangman Game</title>
+  </head>
+
+  <body>
+    <h1>Let's play hangman!</h1>
+
+    <script type="text/javascript">
+      /*
+      var name = prompt("What's your name?");
+      console.log("Hello " + name);
+      */
+
+      /*
+      var likesCats = confirm("Do you like cats?");
+      if (likesCats) {
+        console.log("You're a cool cat!");
+      } else {
+        console.log("Yeah, that's fine. You're still cool!");
+      }
+      */
+
+      //alert("JavaScript is awesome!");
+
+      // create an array of words to guess
+      var words = [
+        "javascript",
+        "monkey",
+        "amazing",
+        "pancake"
+      ];
+
+      // pick a random word from words array
+      var word = words[Math.floor(Math.random() * words.length)];
+      //console.log(word);
+
+      // set up answer array
+      var answerArray = [];
+      for (var i = 0; i < word.length; i++) {
+        answerArray[i] = "_";
+      }
+      //console.log(answerArray);
+
+      var remainingLetters = word.length;
+      //console.log(remainingLetters);
+
+      // the game loop
+      while (remainingLetters > 0) {
+        // show the player their progress
+        alert(answerArray.join(" "));
+
+        //get a guess from the player, ensuring it's a single character
+        var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+
+        if(guess === null){
+          // exit the game loop (quit)
+          break;
+        } else if (guess.length !== 1) {
+          alert("Please enter a single letter.");
+        } else {
+          //update the game state with the current guess
+          for (var j = 0; j < word.length; j++) {
+            if (word[j] === guess) {
+              answerArray[j] = guess;
+              remainingLetters--;
+            }
+          }
+        }
+      }
+      //end of the game loop
+
+      // remainingLetters is 0, show the answer and congratulate the player
+      alert(answerArray.join(" "));
+      alert("Good job! The answer was " + word);
+
+    </script>
+  </body>
+
+</html>
